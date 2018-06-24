@@ -1,36 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>RPS Multiplayer</title>
 </head>
+
 <body>
-  
-            <nav class="navbar navbar-expand-lg navbar-light shadow  ">
-                    <a class="navbar-brand " href="#">
-                        <img src="assets/images/RPS-header-image.png" width="120" height="80" class="d-inline-block align-top ml-5" alt="">
-                        <span class="ml-5  title">Rock Paper Scissors Game</span>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            
-                </nav>
-   
+
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow  ">
+        <a class="navbar-brand" href="#">
+            <img src="assets/images/RPS-image.png" width="150" height="100" class="d-inline-block align-top ml-5" alt="">
+            <span class=" p-2 title">Rock Paper Scissors Game</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </nav>
+
+    <div class="container-fluid">
+
+        <div class="row ml-5 mt-3">
+            <div class="col-md-12">
+
+                <form class="form-inline ">
+
+                    <!-- <label class="sr-only" for="inlineFormInputName2">name</label> -->
+                    <input type="text" id="name1-input" class="form-control  mr-sm-2" id="inlineFormInputName2" placeholder="Name">
+                    <!-- <label class="sr-only" for="inlineFormInputName2">Email</label> -->
+
+                    <button type="submit" id="startBtn" class="btn startBtn ">Start</button>
+                </form>
+            </div>
+
+        </div>
 
 
 
-        <!-- Firebase Reference -->
-        <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-        <!-- jQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-         <!-- script -->
-        <script src="assets/javascript/app.js"></script>
+
+
+        <div class="row mt-3 ml-5">
+            <div class="col-md-3 border firstPlayer h-25 mr-1 player1Div">
+                <div class="p-5">
+                    <P id="player1-name"></P>
+                    <P id="player1-name1"></P>
+                    <P id="player1-status"></P>
+                    <hr>
+                    <div id="choices1" class="btn-group-vertical" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary">
+                            <img src="assets/images/rock.png" width="150" height="50" onclick="chooseRock1()">
+                        </button>
+                        <button type="button" class="btn btn-secondary">
+                            <img src="assets/images/paper.png" width="150" height="50" onclick="choosePaper1()">
+                        </button>
+                        <button type="button" class="btn btn-secondary">
+                            <img src="assets/images/scissor.png" width="150" height="50" onclick="chooseScissor1()">
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-3 border bg-light h-50 mr-1">
+                <div class="p-5">
+                    <p id="status"> </p>
+                </div>
+            </div>
+            <div class="col-md-3 border secondPlayer h-25 mr-1">
+                <div class="p-5">
+                    <P id="player2-name"></P>
+                    <P id="player2-name2"></P>
+                    <P id="player2-status"></P>
+                    <hr>
+                    <div id="choices2" class="btn-group-vertical " role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary">
+                            <img src="assets/images/rock.png" width="150" height="50" onclick="chooseRock2()">
+                        </button>
+                        <button type="button" class="btn btn-secondary">
+                            <img src="assets/images/paper.png" width="150" height="50" onclick="choosePaper2()">
+                        </button>
+                        <button type="button" class="btn btn-secondary">
+                            <img src="assets/images/scissor.png" width="150" height="50" onclick="chooseScissor2()">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="row ml-5 ">
+        <div class="col-md-10  my-4">
+            <form class="form-inline  ">
+
+                <textarea type="textarea" id="chat" class="form-control col-md-10 "></textarea>
+                <input type="text" id="message" class="form-control  mr-sm-2 col-md-7 mt-2">
+                <button type="submit" id="sendBtn" class="btn sendBtn col-md-2 mt-2">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <script src="assets/javascript/bootbox.min.js"></script>
+
+    <script src="assets/javascript/app.js"></script>
+
 </body>
+
 </html>

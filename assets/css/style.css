@@ -1,4 +1,32 @@
-nav{
-    background-color: #d2cfb8
+body {
+
+  background-color: #301f0d;
+  color:  #6c4b1f;
+}
+.title{
+    font-size: 40px;
+    text-align: center;
+    color:  #6c4b1f;
+    font-family: cursive;
+	
+	font-weight: bold;
+	
    
+}
+.startBtn{
+     background-color:  #6c4b1f
+   
+}
+.firstPlayer{
+    background-color: #b85750;
+}
+.secondPlayer{
+    background-color: #d5a253;
+}
+.player1Div
+{
+    height: 100px;;
+}
+textarea{
+    height:150px;
 }
