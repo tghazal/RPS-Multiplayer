@@ -96,8 +96,28 @@ database.ref("/players/").on("value", function (snap) {
 
   }
 
+
+
+  if (!player1 && !player2) {
+		database.ref("/chat/").remove();
+		database.ref("/turn/").remove();
+		database.ref("/result/").remove();
+
+		$("#chat").empty();
+		$("#status").html("");
+	}
 })
 
+// Attach a listener that detects user disconnection events
+database.ref("/players/").on("child_removed", function(snapshot) {
+	var msg = snapshot.val().name + " has disconnected!";
+
+	// Get a key for the disconnection chat entry
+	var chatKey = database.ref().child("/chat/").push().key;
+
+	// Save the disconnection chat entry
+	database.ref("/chat/" + chatKey).set(msg);
+});
 
 // Attach a listener to the database /turn/ node to listen for any changes
 database.ref("/turn/").on("value", function(snapshot) {
@@ -133,20 +153,11 @@ database.ref("/result").on("value",function(snap)
 })
 
 database.ref("/chat/").on("child_added", function(snapshot) {
+  console.log(snapshot.val())
 	var chatMsg = snapshot.val();
-	var chatEntry = $("<div>").html(chatMsg);
-
-	// // Change the color of the chat message depending on user or connect/disconnect event
-	// if (chatMsg.includes("disconnected")) {
-	// 	chatEntry.addClass("chatColorDisconnected");
-	// } else if (chatMsg.includes("joined")) {
-	// 	chatEntry.addClass("chatColorJoined");
-	// } else if (chatMsg.startsWith(yourPlayerName)) {
-	// 	chatEntry.addClass("chatColor1");
-	// } else {
-	// 	chatEntry.addClass("chatColor2");
-	// }
-
+	var chatEntry = $("<p>").text(chatMsg);
+console.log(chatEntry)
+//$("#chat").append("hi")
 	$("#chat").append(chatEntry);
 
 });

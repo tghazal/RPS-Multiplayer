@@ -13,6 +13,20 @@ body {
 	
    
 }
+
+#chat{
+	height: 150px;
+	width: 100%;
+	overflow: auto;
+	text-align: left;
+  	border-radius: 10px;
+  	background-color:#ffffff;
+	font-size: 1em;
+	color: #084596;
+	padding: 1em 1em 1em 1em;
+}
+
+
 .startBtn{
      background-color:  #6c4b1f
    
