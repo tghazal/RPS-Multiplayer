@@ -52,9 +52,7 @@ database.ref("/players/").on("value", function (snap) {
     $("#player1-status").text("");
     console.log("player1 not exist")
     database.ref("/result/").remove();
-    // database.ref().child("/players/player2/win").set(0);
-    // database.ref().child("/players/player2/loss").set(0);
-    // database.ref().child("/players/player2/tie").set(0);
+  
 
   }
 
@@ -79,9 +77,7 @@ database.ref("/players/").on("value", function (snap) {
     $("#player2-name").text("waiting for player2"); 
     $("#player2-status").text("");
     database.ref("/result/").remove();
-    // database.ref().child("/players/player1/win").set(0);
-    // database.ref().child("/players/player1/loss").set(0);
-    // database.ref().child("/players/player1/tie").set(0);
+
   }
 
  // If both players are now present, it's player1's turn
@@ -201,8 +197,7 @@ function addToDatabase1(choice)
     // Set the turn value to 2, as it is now player2's turn
 	  turn = 2;
     database.ref().child("/turn").set(2);
-    // $("#choices2").removeClass("d-non");
-    // $("#choices2").addClass("d-block");
+   
    console.log("player2 turn")
   
     // Update the center display
@@ -430,33 +425,6 @@ console.log(playerName)
 
 
 
-
-
-  // event.preventDefault();
-
-  // var message = $("#message").val().trim();
-  // database.ref(/chat/).set({
-  //   name: playerName,
-  //   message: message
-  // })
- 
-  // console.log(playerName);
-  // database.ref(/chat/).on("child_added", function (snapshot) {
-  //   var messages = snapshot.val();
-
-  //   fillChat(messages.name, messages.message)
-
-  // })
-
 })
 
-// function fillChat(name, message) {
-//   $("#chat").text("hi")
-//   console.log(name)
-//   console.log(message)
-//   var nameP = $("<p>").text(name);
-//   var messageP = $("<p>").text(message);
-//   var chatDiv = $("<div>").append([nameP, messageP]);
-//   $("#chat").append(chatDiv)
-// }
 
